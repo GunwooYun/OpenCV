@@ -2,11 +2,13 @@
 #define CAMCAPTURE_H
 
 #include <QWidget>
-#include <QDebug>
 #include <opencv2/opencv.hpp>
-#include <iostream>
-using namespace std;
+//#include <iostream>
+//#include <string>
+
 using namespace cv;
+using namespace std;
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class CamCapture; }
@@ -19,10 +21,18 @@ class CamCapture : public QWidget
 public:
     CamCapture(QWidget *parent = nullptr);
     ~CamCapture();
-    void camView();
-    void put_string(Mat &frame, string text, Point pt, int value);
 
 private:
     Ui::CamCapture *ui;
+    void CamView();
+    void put_string(Mat &frame, string text, Point pt, int value);
+    bool camViewFlag;
+    int cnt;
+    string fname;
+    Mat frame; // Matrix data type
+
+private slots:
+    void camPlay(bool);
+    void snapShot();
 };
 #endif // CAMCAPTURE_H

@@ -1,5 +1,4 @@
 #include <opencv2/opencv.hpp>
-//#include <time.h>
 
 using namespace cv;
 using namespace std;
@@ -44,12 +43,12 @@ int main()
 		fname = "cam_" + to_string(cnt++);
 		fname += ".jpg"; // Save frame file as jpg
 		imshow("카메라 영상보기", frame); // show frame
-		int key = waitKey(33);
-		if (key == 115) // 's'
+		int key = waitKey(33); // Delay for 33ms -> 30 frame / sec
+		if (key == 's') // 115
 		{
 			imwrite(fname, frame);
 		}
-		else if (key == 98) // 'b'
+		else if (key == 'b') // 98
 		{
 			cout << "key : " << key << endl;
 			break;
